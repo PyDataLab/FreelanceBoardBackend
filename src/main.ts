@@ -4,7 +4,10 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: 'http://localhost:3001', // адрес твоего фронтенда (Next.js)
+    origin: [
+    'http://localhost:3001', // для локальной разработки
+    'https://freelanceboardfrontend.onrender.com', // продакшн фронтенд
+  ],
   });
   await app.listen(process.env.PORT ?? 3000);
 }
